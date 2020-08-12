@@ -87,145 +87,7 @@ namespace GOLStartUpTemplate1
             }
             return count;
         }
-        //private int CountNeighbors(int x, int y)
-        //{
-        //    //first define neighbors. 
-        //    //enum Location {topLeft= 1, top, bottomRight, bottom  }
-        //    int alive = 0;
-        //    bool mate1 = false;
-        //    bool mate2 = false;
-        //    bool mate3 = false;
-        //    bool mate4 = false;
-        //    bool mate5 = false;
-        //    bool mate6 = false;
-        //    bool mate7 = false;
-        //    bool mate8 = false;
-
-        //    //store the values into neighbor variables.
-        //    //if no neighbors, get value from other end of universe
-
-        //    if (x == 0 & y == 0)
-        //    {//top left edge modifies mate 1, 2, 3, 4, 6
-        //        mate1 = universe[99, 99];
-        //        mate2 = universe[98, 99];
-        //        mate3 = universe[97, 99];
-        //        mate4 = universe[99, 98];
-        //        mate5 = universe[x + 1, y];
-        //        mate6 = universe[99, 97];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[x + 1, y + 1];
-        //    }
-        //    else if (x == 0 && y == 99)
-        //    {//bottem left edge modifies mate 1,4,6,7,8
-        //        mate1 = universe[1, 99];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[x + 1, y - 1];
-        //        mate4 = universe[2, 99];
-        //        mate5 = universe[1, 0];
-        //        mate6 = universe[99, 0];
-        //        mate7 = universe[98, 0];
-        //        mate8 = universe[97, 0];
-        //    }
-        //    else if (x == 99 && y == 99)
-        //    {//bottom right edge modifies mate 3,5,6,7,8
-        //        mate1 = universe[x - 1, y - 1];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[2, 0];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[1, 0];
-        //        mate6 = universe[0, 2];
-        //        mate7 = universe[0, 1];
-        //        mate8 = universe[0, 0];
-        //    }
-        //    else if (x == 99 && y == 0)
-        //    {//top right 
-        //        mate1 = universe[97, 0];
-        //        mate2 = universe[98, 0];
-        //        mate3 = universe[99, 0];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[98, 0];
-        //        mate6 = universe[x - 1, y + 1];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[97, 0];
-        //    }
-        //    else if (x == 0)
-        //    {//left edge modifies mate 1, 4, 6
-        //        mate1 = universe[99, y - 1];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[x + 1, y - 1];
-        //        mate4 = universe[99, y];
-        //        mate5 = universe[x + 1, y];
-        //        mate6 = universe[99, y + 1];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[x + 1, y + 1];
-        //    }
-        //    else if (x == 99)
-        //    {//right edge modifies mate 3, 5, 8
-        //        mate1 = universe[x - 1, y - 1];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[2, 0];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[1, 0];
-        //        mate6 = universe[x - 1, y + 1];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[0, 0];
-        //    }
-
-        //    else if (y == 0)
-        //    {//top
-        //        mate1 = universe[x - 1, 99];
-        //        mate2 = universe[x, 99];
-        //        mate3 = universe[x + 1, 99];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[x + 1, y];
-        //        mate6 = universe[x - 1, y + 1];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[x + 1, y + 1];
-        //    }
-        //    else if (y == 99)
-        //    {   //bottom
-        //        mate1 = universe[x - 1, y - 1];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[x + 1, y - 1];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[x + 1, y];
-        //        mate6 = universe[x - 1, 0];
-        //        mate7 = universe[x, 0];
-        //        mate8 = universe[x + 1, 0];
-        //    }
-        //    else
-        //    {
-        //        //default               
-        //        mate1 = universe[x - 1, y - 1];
-        //        mate2 = universe[x, y - 1];
-        //        mate3 = universe[x + 1, y - 1];
-        //        mate4 = universe[x - 1, y];
-        //        mate5 = universe[x + 1, y];
-        //        mate6 = universe[x - 1, y + 1];
-        //        mate7 = universe[x, y + 1];
-        //        mate8 = universe[x + 1, y + 1];
-        //    }
-
-        //    //check each neighbors for alive, return total
-        //    if (mate1 == true)
-        //        alive++;
-        //    if (mate2 == true)
-        //        alive++;
-        //    if (mate3 == true)
-        //        alive++;
-        //    if (mate4 == true)
-        //        alive++;
-        //    if (mate5 == true)
-        //        alive++;
-        //    if (mate6 == true)
-        //        alive++;
-        //    if (mate7 == true)
-        //        alive++;
-        //    if (mate8 == true)
-        //        alive++;
-
-        //    return alive;
-        //}
+      
 
 
         private void NextGeneration()
@@ -378,60 +240,31 @@ namespace GOLStartUpTemplate1
                     timer.Enabled = false;
                     // Update status strip generations
                     toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+                    Console.WriteLine("New Button Clicked!!");
                     graphicsPanel1.Invalidate();
                 }
             }
         }
 
 
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    Console.WriteLine("BOOM!!");
-        //    graphicsPanel1.Invalidate();
-        //}
-
         private void toolStripButton1Start_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
             graphicsPanel1.Invalidate();
             Console.WriteLine("Start Button Clicked!!");
-        }
+        }      
 
-        //private int exitToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    return 0;
-        //}
-
-
-        private void toolStripButton3Next_Click(object sender, EventArgs e)
-        {
-            timer.Enabled = false;
-            Console.WriteLine("Next Button Clicked!!");
-            graphicsPanel1.Invalidate();
-        }
 
         private void toolStripButton2Pause_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
             Console.WriteLine("Pause Button Clicked!!");
-            graphicsPanel1.Invalidate();
-            //Console.WriteLine("Pause Button CLicked");
-            //if (timer.Enabled == true)
-            //{
-            //    timer.Enabled = false;
-            //    graphicsPanel1.Invalidate();
-            //}
-            //else
-            //{
-            //    timer.Enabled = true;
-            //    graphicsPanel1.Invalidate();
-            //}
+            graphicsPanel1.Invalidate();            
         }
 
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
-            newToolStripMenuItem_Click(sender, e);
+            newToolStripMenuItem_Click(sender, e);            
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -466,6 +299,47 @@ namespace GOLStartUpTemplate1
                 }
             }
             graphicsPanel1.Invalidate();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void backColorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = gridColor;
+            
+            if(DialogResult.OK == dlg.ShowDialog()) //returns true if okay/accept is selected
+            {
+                gridColor = dlg.Color;
+                graphicsPanel1.Invalidate(); 
+            }
+        }
+
+        private void cellColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = cellColor; 
+
+            if(DialogResult.OK == dlg.ShowDialog())
+            {
+                cellColor = dlg.Color;
+                graphicsPanel1.Invalidate(); 
+            }
+        }
+
+        private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = graphicsPanel1.BackColor; 
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                graphicsPanel1.BackColor = dlg.Color;
+                graphicsPanel1.Invalidate(); 
+            }
         }
     }
 }

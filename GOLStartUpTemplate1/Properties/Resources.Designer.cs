@@ -82,6 +82,36 @@ namespace GOLStartUpTemplate1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pause_16x {
+            get {
+                object obj = ResourceManager.GetObject("Pause_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PlayVideo_16x {
+            get {
+                object obj = ResourceManager.GetObject("PlayVideo_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Question_16x {
+            get {
+                object obj = ResourceManager.GetObject("Question_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Random {
             get {
                 object obj = ResourceManager.GetObject("Random", resourceCulture);
@@ -95,6 +125,16 @@ namespace GOLStartUpTemplate1.Properties {
         internal static System.Drawing.Bitmap Start {
             get {
                 object obj = ResourceManager.GetObject("Start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StepForward_16x {
+            get {
+                object obj = ResourceManager.GetObject("StepForward_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
