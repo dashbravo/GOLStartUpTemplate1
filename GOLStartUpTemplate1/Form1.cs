@@ -18,7 +18,7 @@ namespace GOLStartUpTemplate1
         
 
         // The universe array
-        bool[,] universe = new bool[200, 200];
+        bool[,] universe = new bool[100, 100];
          
 
         // Drawing colors
@@ -235,15 +235,18 @@ namespace GOLStartUpTemplate1
                 // Iterate through the universe in the x, left to right
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    universe[x, y] = false;
+                    Console.WriteLine("New Button Clicked!!");
+                    universe[x,y] = false;
                     generations = 0;
                     timer.Enabled = false;
-                    // Update status strip generations
+                    //// Update status strip generations and revert colors 
                     toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
-                    Console.WriteLine("New Button Clicked!!");
-                    graphicsPanel1.Invalidate();
+                    gridColor = Color.Black;
+                    cellColor = Color.Red;
+                    graphicsPanel1.BackColor = Color.White;                     
                 }
             }
+            graphicsPanel1.Invalidate();
         }
 
 
@@ -269,7 +272,13 @@ namespace GOLStartUpTemplate1
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //create text for the version of the game and the author info.            
+            //create text for the version of the game and the author info.  
+
+            ModalDialog dlg = new ModalDialog(); 
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                int x = 0; 
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
