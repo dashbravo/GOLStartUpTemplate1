@@ -31,6 +31,9 @@ namespace GOLStartUpTemplate1
         // Generation count
         int generations = 0;
 
+        // living cells count
+        int alive = 0; 
+
         public Form1()
         {
             InitializeComponent();
@@ -92,14 +95,16 @@ namespace GOLStartUpTemplate1
 
         private void NextGeneration()
         {
+            alive = 0; 
             bool[,] scratchpad = new bool[universe.GetLength(0), universe.GetLength(1)]; //this will hold the values of the universe temporarily.
-            int living = 0;
+            int neighbors = 0;         
+            
             // Iterate through the universe 
             for (int y = 0; y < universe.GetLength(1); y++)
             {                
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {                    
-                    living = CountNeighbors(x, y);
+                    neighbors = CountNeighbors(x, y);
 
                     //Any living cell in the current universe with less than 2 living neighbors dies in the next generation.                    
                     //Any living cell with more than 3 living neighbors will die in the next generation. 
@@ -108,24 +113,28 @@ namespace GOLStartUpTemplate1
 
                     if (universe[x, y] == false)
                     {
-                        if (living == 3)
-                            scratchpad[x, y] = true; 
+                        if (neighbors == 3)
+                        {
+                            scratchpad[x, y] = true;
+                            alive++; 
+                        }                           
                     }
                      else
                     {
-                        if (living > 3)
+                        if (neighbors > 3)
                         {
-                            scratchpad[x, y] = false;
+                            scratchpad[x, y] = false;                                                  
                         }
-                        else if (living == 2 || living == 3)
+                        else if (neighbors == 2 || neighbors == 3)
                         {
                             scratchpad[x, y] = true;
+                            alive++; 
                         }
-                        else if (living < 2)
+                        else if (neighbors < 2)
                         {
-                            scratchpad[x, y] = false;
+                            scratchpad[x, y] = false;                            
                         }
-                     }           
+                     }  
                 }
             }
 
@@ -133,8 +142,9 @@ namespace GOLStartUpTemplate1
             universe = scratchpad;
             scratchpad = null;
 
+            //update the status strip alive count 
+           toolStripStatusLabel1Alive.Text = "Alive = " + alive.ToString();
 
-           
             // Increment generation count
             generations++;
 
@@ -217,10 +227,23 @@ namespace GOLStartUpTemplate1
                 // Toggle the cell's state
                 universe[(int)x, (int)y] = !universe[(int)x, (int)y];
 
+                //update alive integer
+                if (universe[(int)x, (int)y] == true)
+                {
+                    alive++;
+                }
+                else
+                    alive--;
+
+                //update the status strip alive count 
+                toolStripStatusLabel1Alive.Text = "Alive = " + alive.ToString();
+
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate(); //never put this in the function paint, it will cause a paint loop. 
             }
         }
+
+  
 
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -232,15 +255,19 @@ namespace GOLStartUpTemplate1
             //NEW BUTTON
             for (int y = 0; y < universe.GetLength(1); y++)
             {
-                // Iterate through the universe in the x, left to right
+                //Iterate through the universe 
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
                     Console.WriteLine("New Button Clicked!!");
                     universe[x,y] = false;
                     generations = 0;
+                    alive = 0; 
                     timer.Enabled = false;
+                    //TODO: Consider a function for update status for generations and alive count
                     //// Update status strip generations and revert colors 
                     toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+                    //update the status strip alive count 
+                    toolStripStatusLabel1Alive.Text = "Alive = " + alive.ToString();
                     gridColor = Color.Black;
                     cellColor = Color.Red;
                     graphicsPanel1.BackColor = Color.White;                     
@@ -277,7 +304,7 @@ namespace GOLStartUpTemplate1
             ModalDialog dlg = new ModalDialog(); 
             if (DialogResult.OK == dlg.ShowDialog())
             {
-                int x = 0; 
+                
             }
         }
 
@@ -293,7 +320,7 @@ namespace GOLStartUpTemplate1
 
         private void toolStripButton1Random_Click(object sender, EventArgs e)
         {
-            
+            alive = 0;
             for (int y = 0; y < universe.GetLength(1); y++)
             {
                 for (int x = 0; x < universe.GetLength(0); x++)
@@ -302,6 +329,7 @@ namespace GOLStartUpTemplate1
                     if (randomNumber == 0)
                     {
                         universe[x, y] = true;
+                        alive++;
                     }
                     else 
                         universe[x, y] = false;
@@ -349,6 +377,36 @@ namespace GOLStartUpTemplate1
                 graphicsPanel1.BackColor = dlg.Color;
                 graphicsPanel1.Invalidate(); 
             }
+        }
+
+
+
+        private void fromSeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModalDialog dlg = new ModalDialog();
+
+            dlg.Seed = numericUpDown1.Value; 
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                numericUpDown1.Value = dlg.Seed; 
+            }
+        }
+
+        private void backColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings dlg = new Settings();
+            dlg.ShowDialog();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reset();
         }
     }
 }
